@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURELIAN — класичні костюми та пошиття на замовлення</title>
+<meta name="description" content="AURELIAN — ательє класичного чоловічого костюма у стилі old money. Пошиття за мірками, тканини італійських і англійських фабрик, примірка в Києві, доставка по Україні.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3eee4;        /* слонова кістка */
+  --paper:#ebe4d6;
+  --ink:#16191f;       /* антрацит */
+  --navy:#1a2230;      /* глибокий синій */
+  --deep:#0f1218;
+  --green:#1f2a24;     /* бутилкова зелень */
+  --brass:#b08d57;     /* латунь */
+  --brass-ink:#7d6235; /* латунь для тексту на світлому */
+  --muted:#5f5a52;
+  --line:rgba(22,25,31,.14);
+  --on-dark:#ece5d6;
+  --line-dark:rgba(236,229,214,.16);
+  --edge:max(16px,calc((100% - 1200px)/2));
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sc:"Cormorant SC","Cormorant Garamond",serif;
+  --sans:"Jost",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+p{max-width:62ch}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(36px,4.6vw,61px)}
+h3{font-size:clamp(24px,2.2vw,31px)}
+em{font-style:italic;color:var(--brass-ink)}
+.dark em,.hero em{color:var(--brass)}
+.cap{font:500 12px/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase}
+.wrap{padding-inline:var(--edge)}
+section{padding-block:clamp(72px,10vw,128px)}
+.rule{display:flex;align-items:center;gap:16px;color:var(--brass-ink)}
+.rule::after{content:"";height:1px;flex:1;background:currentColor;opacity:.4;max-width:120px}
+.dark .rule{color:var(--brass)}
+.sh{display:grid;grid-template-columns:1fr auto;gap:16px 48px;align-items:end;margin-bottom:56px}
+.sh .num{grid-column:1/-1}
+.sh p{color:var(--muted)}
+.dark .sh p{color:rgba(236,229,214,.7)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;font:500 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.brass{background:var(--brass);border-color:var(--brass);color:var(--deep)}
+.btn.brass:hover{background:transparent;color:var(--brass)}
+.btn.ghost{background:transparent;color:var(--on-dark);border-color:rgba(236,229,214,.5)}
+.btn.ghost:hover{background:var(--on-dark);color:var(--ink)}
+.zoom{overflow:hidden}
+.zoom img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.zoom:hover img{transform:scale(1.05)}
+
+/* анонс + шапка */
+.bar{background:var(--deep);color:var(--on-dark);text-align:center;padding:10px 16px;font:400 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.bar b{color:var(--brass);font-weight:500}
+header{position:sticky;top:0;z-index:50;background:rgba(243,238,228,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{font:600 26px/1 var(--sc);letter-spacing:.3em}
+.logo small{display:block;font:400 9px/1 var(--sans);letter-spacing:.42em;color:var(--brass-ink);margin-top:6px;text-align:center}
+nav{display:flex;gap:32px}
+nav a{font:400 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.hd-r{display:flex;align-items:center;gap:20px}
+.cart{position:relative;display:flex;align-items:center;gap:8px;font:400 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.cart i{font-style:normal;display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:var(--brass);color:var(--deep);font-size:11px;letter-spacing:0}
+.hd .btn{height:44px;padding:0 20px}
+
+/* hero */
+.hero{position:relative;min-height:min(92vh,860px);display:grid;align-items:end;color:var(--on-dark);background:var(--deep);padding:0}
+.hero>img{position:absolute;inset:0;object-position:60% 30%;filter:saturate(.75) contrast(1.05)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,16,.92) 0%,rgba(10,12,16,.6) 45%,rgba(10,12,16,.15) 100%),linear-gradient(0deg,rgba(10,12,16,.7),transparent 40%)}
+.hero .in{position:relative;padding-block:120px 88px}
+.hero h1{font-size:clamp(48px,7.4vw,112px);font-weight:400;max-width:12ch;margin:24px 0 28px}
+.hero p{font-size:19px;color:rgba(236,229,214,.82);max-width:46ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.hero .meta{display:flex;gap:48px;margin-top:72px;padding-top:28px;border-top:1px solid var(--line-dark);max-width:640px}
+.hero .meta b{display:block;font:500 34px/1 var(--serif);color:var(--brass);margin-bottom:8px}
+.hero .meta span{font-size:13px;color:rgba(236,229,214,.65)}
+
+/* переваги */
+.usp{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);padding-block:0}
+.usp div{padding:48px 32px 48px 0;border-right:1px solid var(--line)}
+.usp div+div{padding-left:32px}
+.usp div:last-child{border-right:0}
+.usp .n{font:400 15px/1 var(--sc);color:var(--brass-ink);letter-spacing:.2em}
+.usp h3{font-size:24px;margin:16px 0 10px}
+.usp p{font-size:15px;color:var(--muted)}
+
+/* колекція */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px}
+.card .ph{aspect-ratio:3/4;background:var(--paper);margin-bottom:20px}
+.card .ph img{object-position:50% 25%}
+.card .cap{color:var(--brass-ink)}
+.card h3{font-size:26px;margin:8px 0 6px}
+.card p{font-size:14px;color:var(--muted);margin-bottom:16px}
+.card .row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+.card .price{font:500 22px/1 var(--serif)}
+.card button{background:none;border:0;font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--brass);padding:4px 0}
+
+/* класи стилю */
+.styles{background:var(--paper)}
+.st-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
+.st{position:relative;color:var(--on-dark);min-height:520px;display:flex;align-items:flex-end;grid-column:span 2;background:var(--deep)}
+.st.wide{grid-column:span 3;min-height:460px}
+.st img{position:absolute;inset:0;filter:saturate(.8)}
+.st::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,12,16,.88) 0%,rgba(10,12,16,.25) 55%,transparent 80%)}
+.st .t{position:relative;z-index:1;padding:32px}
+.st .cap{color:var(--brass)}
+.st h3{font-size:34px;margin:10px 0 8px}
+.st p{font-size:15px;color:rgba(236,229,214,.78)}
+
+/* імператор */
+.dark{background:var(--deep);color:var(--on-dark)}
+.emperor{display:grid;grid-template-columns:5fr 7fr;gap:0;padding:0}
+.emperor .ph{min-height:720px}
+.emperor .ph img{object-position:50% 30%}
+.emperor .tx{padding:clamp(56px,8vw,120px) var(--edge) clamp(56px,8vw,120px) clamp(40px,6vw,96px);display:flex;flex-direction:column;justify-content:center}
+.emperor blockquote{font:400 clamp(34px,4vw,56px)/1.12 var(--serif);margin:28px 0 32px;max-width:18ch}
+.emperor .tx>p{color:rgba(236,229,214,.75)}
+.vir{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;padding-top:40px;border-top:1px solid var(--line-dark)}
+.vir b{display:block;font:500 15px/1 var(--sc);letter-spacing:.2em;color:var(--brass);margin-bottom:12px}
+.vir span{font-size:15px;color:rgba(236,229,214,.72);line-height:1.6}
+
+/* пошиття */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:20px}
+.step::before{counter-increment:s;content:"0" counter(s);font:400 44px/1 var(--serif);color:var(--brass-ink);display:block;margin-bottom:16px}
+.step h3{font-size:23px;margin-bottom:8px}
+.step p{font-size:15px;color:var(--muted)}
+.tailor-ph{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;margin-top:64px;height:440px}
+
+/* тканини */
+.fab-wrap{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+.fab-big{aspect-ratio:4/3.4;background:var(--paper)}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:32px 0}
+.sw button{aspect-ratio:1;border:1px solid var(--line);padding:4px;background:none;cursor:pointer}
+.sw button img{pointer-events:none}
+.sw button.on{border-color:var(--ink);outline:1px solid var(--ink)}
+.fab-info dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:15px;border-top:1px solid var(--line);padding-top:20px;margin:24px 0 32px}
+.fab-info dt{color:var(--muted)}
+.fab-info h3{font-size:36px}
+
+/* аксесуари */
+.acc{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.acc .ph{aspect-ratio:4/5;margin-bottom:20px}
+.acc h3{font-size:26px;margin-bottom:6px}
+.acc p{font-size:15px;color:var(--muted)}
+
+/* стиль життя */
+.life{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:220px;gap:16px}
+.life .zoom:nth-child(1){grid-column:span 7;grid-row:span 2}
+.life .zoom:nth-child(2){grid-column:span 5;grid-row:span 2}
+.life .zoom:nth-child(3){grid-column:span 4;grid-row:span 2}
+.life .zoom:nth-child(4){grid-column:span 4;grid-row:span 2}
+.life .q{grid-column:span 4;grid-row:span 2;background:var(--green);color:var(--on-dark);padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+.life .q p{font:400 30px/1.2 var(--serif)}
+.life .q .cap{color:var(--brass)}
+
+/* тарифи */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line-dark)}
+.tier{padding:48px 40px;border-right:1px solid var(--line-dark);display:flex;flex-direction:column}
+.tier:last-child{border-right:0}
+.tier.top{background:rgba(176,141,87,.08)}
+.tier .cap{color:var(--brass)}
+.tier h3{font-size:36px;margin:12px 0}
+.tier .pr{font:400 46px/1 var(--serif);margin:16px 0 24px}
+.tier .pr small{font:400 14px var(--sans);color:rgba(236,229,214,.6)}
+.tier ul{list-style:none;font-size:15px;color:rgba(236,229,214,.78);margin-bottom:36px;flex:1}
+.tier li{padding:10px 0;border-bottom:1px solid var(--line-dark)}
+.tier li::before{content:"—";color:var(--brass);margin-right:10px}
+
+/* відгуки */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.rev blockquote{font:400 25px/1.35 var(--serif);margin-bottom:24px}
+.rev .who{font-size:14px;color:var(--muted)}
+.rev .who b{display:block;color:var(--ink);font-weight:500;letter-spacing:.06em}
+
+/* faq */
+.faq-wrap{display:grid;grid-template-columns:4fr 8fr;gap:64px}
+details{border-top:1px solid var(--line);padding:24px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;font:500 23px/1.3 var(--serif)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 26px/1 var(--sans);color:var(--brass-ink)}
+details[open] summary::after{content:"−"}
+details p{margin-top:14px;color:var(--muted);font-size:16px}
+
+/* запис */
+.book{position:relative;color:var(--on-dark);background:var(--deep)}
+.book>img{position:absolute;inset:0;opacity:.32;filter:saturate(.6)}
+.book .in{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.book h2{margin:20px 0}
+.book p{color:rgba(236,229,214,.78)}
+form{display:grid;gap:16px;background:rgba(15,18,24,.78);border:1px solid var(--line-dark);padding:40px}
+label{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+input,select{width:100%;height:52px;margin-top:8px;background:transparent;border:0;border-bottom:1px solid rgba(236,229,214,.35);color:var(--on-dark);font:400 17px var(--sans);outline:none}
+select option{color:var(--ink)}
+input:focus,select:focus{border-color:var(--brass)}
+form .note{font-size:13px;color:rgba(236,229,214,.55)}
+
+/* футер */
+footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-top:1px solid var(--line-dark)}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;font-size:15px}
+.ft h4{font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:20px}
+.ft a,.ft span{display:block;color:rgba(236,229,214,.72);margin-bottom:10px}
+.big{font:600 clamp(64px,15vw,220px)/.9 var(--sc);letter-spacing:.12em;text-align:center;color:rgba(236,229,214,.08);margin:72px 0 24px;white-space:nowrap}
+.copy{display:flex;justify-content:space-between;font-size:13px;color:rgba(236,229,214,.45);border-top:1px solid var(--line-dark);padding-top:24px;gap:16px;flex-wrap:wrap}
+
+/* плаваюча кнопка + тост */
+.fab{position:fixed;right:24px;bottom:24px;z-index:60;display:flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border-radius:40px;background:linear-gradient(135deg,#8a6a36,#d8bd86 50%,#9c7a43);color:var(--deep);box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab .ic{width:44px;height:44px;border-radius:50%;background:var(--deep);display:grid;place-items:center}
+.fab small{display:block;font:400 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-bottom:4px}
+.fab b{font:500 15px/1 var(--sans);letter-spacing:.06em}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:14px 24px;font-size:14px;letter-spacing:.06em;opacity:0;transition:.35s;z-index:70;pointer-events:none;border-left:3px solid var(--brass)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* адаптив */
+@media (max-width:1100px){
+  nav{display:none}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .usp{grid-template-columns:repeat(2,1fr)}
+  .usp div{border-bottom:1px solid var(--line)}
+  .usp div:nth-child(2){border-right:0}
+  .usp div:nth-child(3){padding-left:0}
+  .st,.st.wide{grid-column:span 3}
+  .emperor{grid-template-columns:1fr}
+  .emperor .ph{min-height:520px}
+  .emperor .tx{padding-inline:var(--edge)}
+  .steps{grid-template-columns:repeat(2,1fr);gap:40px 24px}
+  .fab-wrap,.faq-wrap,.book .in{grid-template-columns:1fr;gap:40px}
+  .tiers{grid-template-columns:1fr}
+  .tier{border-right:0;border-bottom:1px solid var(--line-dark)}
+  .revs{grid-template-columns:1fr;gap:40px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .hd{height:64px}
+  .logo{font-size:21px}
+  .hd .btn,.cart span{display:none}
+  .hero .in{padding-block:96px 56px}
+  .hero>img{object-position:72% 30%}
+  .hero::before{background:linear-gradient(0deg,rgba(10,12,16,.96) 0%,rgba(10,12,16,.86) 60%,rgba(10,12,16,.45) 100%)}
+  .hero .meta{gap:24px}
+  .hero .meta b{font-size:26px}
+  .sh{grid-template-columns:1fr;margin-bottom:40px}
+  .grid4{grid-template-columns:1fr 1fr;gap:28px 12px}
+  .card h3{font-size:21px}
+  .card p{display:none}
+  .card .row{flex-direction:column;align-items:flex-start;gap:10px}
+  .usp{grid-template-columns:1fr}
+  .usp div,.usp div+div{padding:32px 0;border-right:0}
+  .st-grid{grid-template-columns:1fr}
+  .st,.st.wide{grid-column:auto;min-height:440px}
+  .vir{grid-template-columns:1fr;gap:24px}
+  .steps{grid-template-columns:1fr}
+  .tailor-ph{grid-template-columns:1fr 1fr;height:auto}
+  .tailor-ph .zoom{aspect-ratio:3/4}
+  .tailor-ph .zoom:first-child{grid-column:1/-1;aspect-ratio:4/3}
+  .acc{grid-template-columns:1fr}
+  .life{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .life>*{grid-column:span 2 !important;grid-row:span 2 !important}
+  .life .q{padding:28px}
+  .tier{padding:36px 24px}
+  form{padding:28px 20px}
+  .ft{grid-template-columns:1fr}
+  .fab{right:16px;bottom:16px;left:16px;justify-content:flex-start}
+  body.fab-shown .toast{bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<div class="bar">Примірка в ательє у Києві · <b>доставка по Україні безкоштовно</b> · виїзд кравця до вас</div>
+
+<header>
+  <div class="hd wrap">
+    <a href="#" class="logo">AURELIAN<small>EST. KYIV</small></a>
+    <nav>
+      <a href="#collection">Колекція</a>
+      <a href="#styles">Стилі</a>
+      <a href="#bespoke">Пошиття</a>
+      <a href="#fabrics">Тканини</a>
+      <a href="#details">Деталі</a>
+      <a href="#faq">Питання</a>
+    </nav>
+    <div class="hd-r">
+      <a href="#collection" class="cart"><span>Кошик</span> <i id="cartN">0</i></a>
+      <a href="#book" class="btn">Примірка</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img src="img/hero.jpg" alt="Чоловік у темно-синьому класичному костюмі сидить у темному інтер'єрі">
+  <div class="in wrap">
+    <div class="rule cap">Класичний костюм · Old Money</div>
+    <h1>Сила, що не потребує <em>доказів</em></h1>
+    <p>Костюми для чоловіків, які несуть відповідальність за справу, родину й слово. Пошиття за вашими мірками з тканин найкращих фабрик Італії та Англії.</p>
+    <div class="ctas">
+      <a href="#book" class="btn brass">Записатись на примірку</a>
+      <a href="#collection" class="btn ghost">Дивитись колекцію</a>
+    </div>
+    <div class="meta">
+      <div><b>4–6</b><span>тижнів пошиття</span></div>
+      <div><b>3</b><span>примірки за мірками</span></div>
+      <div><b>∞</b><span>догляд і підгонка</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПЕРЕВАГИ -->
+<div class="usp wrap">
+  <div><span class="n">I</span><h3>Тканини з історією</h3><p>Вовна Super 120's–150's, кашемір і льон від італійських та англійських фабрик зі столітньою спадщиною.</p></div>
+  <div><span class="n">II</span><h3>Крій за вашими мірками</h3><p>Понад 30 вимірів, власне лекало і три примірки. Костюм сідає, а не «майже сідає».</p></div>
+  <div><span class="n">III</span><h3>Ручна робота</h3><p>Напівполотняна конструкція, ручні петлі на рукавах, підкладка з купро. Деталі, які видно лише вам.</p></div>
+  <div><span class="n">IV</span><h3>Довічний догляд</h3><p>Безкоштовна підгонка, коли змінюєтесь ви. Чистка й прасування за записом.</p></div>
+</div>
+
+<!-- КОЛЕКЦІЯ -->
+<section id="collection" class="wrap">
+  <div class="sh">
+    <div class="num rule cap">Колекція</div>
+    <h2>Гардероб, що <em>успадковують</em></h2>
+    <p>Кожна модель шиється під вас. Ціна вказана за базову тканину.</p>
+  </div>
+  <div class="grid4">
+    <article class="card">
+      <div class="ph zoom"><img src="img/p-tie.jpg" alt="Двобортний темно-синій костюм"></div>
+      <span class="cap">Двійка · Super 130's</span>
+      <h3>«Сенатор»</h3>
+      <p>Темно-синій, однобортний, м'яке плече. Костюм для переговорів, які вирішують.</p>
+      <div class="row"><span class="price">42 000 ₴</span><button data-n="Костюм «Сенатор»">Обрати</button></div>
+    </article>
+    <article class="card">
+      <div class="ph zoom"><img src="img/lk-grey.jpg" alt="Сірий класичний костюм"></div>
+      <span class="cap">Трійка · фланель</span>
+      <h3>«Регент»</h3>
+      <p>Сірий з жилетом. Спокійна впевненість для ради директорів і недільного обіду.</p>
+      <div class="row"><span class="price">48 000 ₴</span><button data-n="Костюм «Регент»">Обрати</button></div>
+    </article>
+    <article class="card">
+      <div class="ph zoom"><img src="img/lk-tux.jpg" alt="Чорний смокінг з метеликом"></div>
+      <span class="cap">Black Tie · шовк</span>
+      <h3>«Імперіал»</h3>
+      <p>Смокінг з атласними лацканами. Для вечорів, які пам'ятають роками.</p>
+      <div class="row"><span class="price">56 000 ₴</span><button data-n="Смокінг «Імперіал»">Обрати</button></div>
+    </article>
+    <article class="card">
+      <div class="ph zoom"><img src="img/lk-coat.jpg" alt="Світле кашемірове пальто"></div>
+      <span class="cap">Пальто · кашемір</span>
+      <h3>«Консул»</h3>
+      <p>Кашемірове пальто кольору верблюжої вовни. Тепло, яке не кричить про ціну.</p>
+      <div class="row"><span class="price">64 000 ₴</span><button data-n="Пальто «Консул»">Обрати</button></div>
+    </article>
+  </div>
+</section>
+
+<!-- КЛАСИ СТИЛЮ -->
+<section id="styles" class="styles">
+  <div class="wrap">
+    <div class="sh">
+      <div class="num rule cap">П'ять класів стилю</div>
+      <h2>Один чоловік. <em>П'ять</em> ролей</h2>
+      <p>Від ради директорів до палуби яхти. Ми збираємо гардероб під кожну з них.</p>
+    </div>
+    <div class="st-grid">
+      <a href="#book" class="st zoom"><img src="img/p-glasses.jpg" alt="Чоловік у темному костюмі в окулярах"><div class="t"><span class="cap">Old Money</span><h3>Спадщина</h3><p>Твід, фланель, оксфорди. Стиль, який передають від батька до сина.</p></div></a>
+      <a href="#book" class="st zoom"><img src="img/lk-bw.jpg" alt="Чорно-біле фото чоловіка в костюмі"><div class="t"><span class="cap">Quiet Luxury</span><h3>Тиша</h3><p>Жодного логотипа. Лише крій, тканина й посадка, які впізнають знавці.</p></div></a>
+      <a href="#book" class="st zoom"><img src="img/atelier.jpg" alt="Смокінги в ательє"><div class="t"><span class="cap">Black Tie</span><h3>Вечір</h3><p>Смокінг, метелик, запонки. Протокол, який ви носите легко.</p></div></a>
+      <a href="#book" class="st wide zoom"><img src="img/hall.jpg" alt="Класичний інтер'єр з бібліотекою"><div class="t"><span class="cap">Power Business</span><h3>Влада</h3><p>Темно-синій і антрацит. Костюм, у якому ухвалюють рішення за інших.</p></div></a>
+      <a href="#book" class="st wide zoom"><img src="img/riviera.jpg" alt="Яхта у відкритому морі"><div class="t"><span class="cap">Riviera</span><h3>Відпочинок</h3><p>Льон, кремовий блейзер, лофери без шкарпеток. Літо на узбережжі.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ІМПЕРАТОР -->
+<section class="emperor dark" id="code">
+  <div class="ph"><img src="img/emperor.jpg" alt="Профіль чоловіка в костюмі в темряві"></div>
+  <div class="tx">
+    <div class="rule cap">Кодекс Імператора</div>
+    <blockquote>Імператор не просить уваги. Він <em>бере відповідальність</em>.</blockquote>
+    <p>Зрілий чоловік не доводить свою цінність гучними брендами. Його сила у порядку, слові та спадщині, яку він будує. Костюм лише підкреслює те, що вже є всередині.</p>
+    <div class="vir">
+      <div><b>Порядок</b><span>Світ навколо впорядкований, бо впорядкований він сам.</span></div>
+      <div><b>Слово</b><span>Сказане один раз має вагу підпису.</span></div>
+      <div><b>Спадщина</b><span>Будує те, що переживе його самого.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОШИТТЯ -->
+<section id="bespoke" class="wrap">
+  <div class="sh">
+    <div class="num rule cap">Пошиття на замовлення</div>
+    <h2>Від першої зустрічі до <em>ідеальної</em> посадки</h2>
+    <p>Повний цикл займає 4–6 тижнів. Ваша присутність потрібна лише тричі.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><h3>Знайомство</h3><p>Розмова про ваш ритм життя, задачі й події. За келихом, без поспіху.</p></div>
+    <div class="step"><h3>Тканина</h3><p>Понад 400 зразків. Допоможемо обрати вагу, колір і малюнок.</p></div>
+    <div class="step"><h3>Мірки</h3><p>Понад 30 вимірів і аналіз постави. Створюємо особисте лекало.</p></div>
+    <div class="step"><h3>Примірки</h3><p>Дві примірки: на каркасі та майже готового виробу.</p></div>
+    <div class="step"><h3>Видача</h3><p>Фінальна підгонка, чохол, вішак із кедра і догляд назавжди.</p></div>
+  </div>
+  <div class="tailor-ph">
+    <div class="zoom"><img src="img/t-cut.jpg" alt="Кравець розкроює тканину"></div>
+    <div class="zoom"><img src="img/t-scissors.jpg" alt="Кравецькі ножиці на темній тканині"></div>
+    <div class="zoom"><img src="img/t-needle.jpg" alt="Голка швейної машини"></div>
+  </div>
+</section>
+
+<!-- ТКАНИНИ -->
+<section id="fabrics" class="wrap" style="padding-top:0">
+  <div class="fab-wrap">
+    <div class="fab-big zoom"><img id="fabImg" src="img/f-navy.jpg" alt="Тканина"></div>
+    <div class="fab-info">
+      <div class="rule cap">Бібліотека тканин</div>
+      <h2 style="margin:16px 0 8px">Тканина, яку <em>відчуваєш</em> рукою</h2>
+      <div class="sw" id="sw">
+        <button class="on" data-img="img/f-navy.jpg" data-t="Midnight Navy" data-c="Вовна Super 130's" data-w="260 г/м" data-o="Італія" aria-label="Midnight Navy"><img src="img/f-navy.jpg" alt=""></button>
+        <button data-img="img/f-check.jpg" data-t="Windowpane" data-c="Вовна і кашемір" data-w="300 г/м" data-o="Англія" aria-label="Windowpane"><img src="img/f-check.jpg" alt=""></button>
+        <button data-img="img/f-brown.jpg" data-t="Camel Flannel" data-c="Фланель 100% вовна" data-w="340 г/м" data-o="Англія" aria-label="Camel Flannel"><img src="img/f-brown.jpg" alt=""></button>
+        <button data-img="img/f-hound.jpg" data-t="Houndstooth" data-c="Твід, гусяча лапка" data-w="380 г/м" data-o="Шотландія" aria-label="Houndstooth"><img src="img/f-hound.jpg" alt=""></button>
+      </div>
+      <h3 id="fabT">Midnight Navy</h3>
+      <dl>
+        <dt>Склад</dt><dd id="fabC">Вовна Super 130's</dd>
+        <dt>Вага</dt><dd id="fabW">260 г/м</dd>
+        <dt>Фабрика</dt><dd id="fabO">Італія</dd>
+      </dl>
+      <a href="#book" class="btn">Замовити зразки додому</a>
+    </div>
+  </div>
+</section>
+
+<!-- ДЕТАЛІ -->
+<section id="details" class="wrap" style="padding-top:0">
+  <div class="sh">
+    <div class="num rule cap">Деталі</div>
+    <h2>Деталі, що говорять <em>тихо</em></h2>
+    <p>Завершіть образ річчю, яку оцінить той, хто розуміє.</p>
+  </div>
+  <div class="acc">
+    <div class="card"><div class="ph zoom"><img src="img/a-cuff.jpg" alt="Срібні запонки на білій сорочці"></div><span class="cap">Срібло 925</span><h3>Запонки «Печатка»</h3><div class="row"><span class="price">6 800 ₴</span><button data-n="Запонки «Печатка»">Додати</button></div></div>
+    <div class="card"><div class="ph zoom"><img src="img/a-shoes.jpg" alt="Коричневі шкіряні броги"></div><span class="cap">Рант Goodyear · телятина</span><h3>Броги «Оксфорд»</h3><div class="row"><span class="price">18 500 ₴</span><button data-n="Броги «Оксфорд»">Додати</button></div></div>
+    <div class="card"><div class="ph zoom"><img src="img/a-watch.jpg" alt="Годинник на зап'ясті з манжетом сорочки"></div><span class="cap">Сорочка · Sea Island</span><h3>Сорочка під запонки</h3><div class="row"><span class="price">7 900 ₴</span><button data-n="Сорочка під запонки">Додати</button></div></div>
+  </div>
+</section>
+
+<!-- СТИЛЬ ЖИТТЯ -->
+<section class="wrap" style="padding-top:0">
+  <div class="sh">
+    <div class="num rule cap">Стиль життя</div>
+    <h2>Світ, у якому <em>не поспішають</em></h2>
+  </div>
+  <div class="life">
+    <div class="zoom"><img src="img/library.jpg" alt="Бібліотека з темного дерева"></div>
+    <div class="zoom"><img src="img/whisky.jpg" alt="Склянка віскі на темному тлі"></div>
+    <div class="zoom"><img src="img/yacht-man.jpg" alt="Чоловік у білому на палубі яхти"></div>
+    <div class="zoom"><img src="img/watch-dark.jpg" alt="Годинник на зап'ясті в темряві"></div>
+    <div class="q"><span class="cap">AURELIAN</span><p>«Справжня розкіш — це час, який не треба нікому доводити».</p></div>
+  </div>
+</section>
+
+<!-- ФОРМАТИ -->
+<section class="dark" id="tiers">
+  <div class="wrap">
+    <div class="sh">
+      <div class="num rule cap">Формати співпраці</div>
+      <h2>Оберіть свій <em>рівень</em></h2>
+      <p>Від одного костюма до гардероба на весь рік з особистим стилістом.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <span class="cap">Made to Measure</span><h3>Костюм</h3>
+        <div class="pr">від 42 000 ₴</div>
+        <ul><li>Крій на базі вашої моделі</li><li>2 примірки</li><li>Понад 200 тканин</li><li>Готово за 4 тижні</li></ul>
+        <button class="btn ghost" data-n="Формат «Костюм»">Обрати</button>
+      </div>
+      <div class="tier top">
+        <span class="cap">Bespoke</span><h3>Ручна робота</h3>
+        <div class="pr">від 95 000 ₴</div>
+        <ul><li>Особисте лекало з нуля</li><li>3 примірки, ручні шви</li><li>Понад 400 тканин, кашемір</li><li>Монограма на підкладці</li></ul>
+        <button class="btn brass" data-n="Формат «Bespoke»">Обрати</button>
+      </div>
+      <div class="tier">
+        <span class="cap">Private Wardrobe</span><h3>Гардероб на рік</h3>
+        <div class="pr">від 380 000 ₴ <small>/ рік</small></div>
+        <ul><li>Особистий стиліст і кравець</li><li>Капсула на 5 класів стилю</li><li>Виїзд до вас додому чи в офіс</li><li>Догляд і зберігання речей</li></ul>
+        <button class="btn ghost" data-n="Формат «Гардероб на рік»">Обрати</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ВІДГУКИ -->
+<section class="wrap">
+  <div class="sh">
+    <div class="num rule cap">Відгуки</div>
+    <h2>Що кажуть <em>клієнти</em></h2>
+    <p>Тексти-заглушки, замініть на реальні.</p>
+  </div>
+  <div class="revs">
+    <div class="rev"><blockquote>«Вперше костюм не треба було носити до кравця після покупки. Він просто мій».</blockquote><div class="who"><b>Андрій, 46</b>власник логістичної компанії</div></div>
+    <div class="rev"><blockquote>«Пошили смокінг до весілля доньки. Без поспіху, без зайвих слів, бездоганно».</blockquote><div class="who"><b>Віктор, 58</b>інвестор</div></div>
+    <div class="rev"><blockquote>«Тепер маю гардероб на рік і не думаю, що вдягнути на зустріч. Час дорожчий».</blockquote><div class="who"><b>Олег, 39</b>юрист, партнер фірми</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap" style="padding-top:0">
+  <div class="faq-wrap">
+    <div>
+      <div class="rule cap">Питання</div>
+      <h2 style="margin-top:16px">Відповідаємо <em>прямо</em></h2>
+    </div>
+    <div>
+      <details open><summary>Скільки часу шиється костюм на замовлення?</summary><p>Made to Measure — близько 4 тижнів, Bespoke — 6 тижнів. Терміново можемо за 14 днів за домовленістю.</p></details>
+      <details><summary>Яка ціна костюма на замовлення?</summary><p>Костюм-двійка від 42 000 ₴, повний bespoke від 95 000 ₴. Ціна залежить від тканини та кількості ручної роботи.</p></details>
+      <details><summary>Чи можна зняти мірки, якщо я не в Києві?</summary><p>Так. Кравець приїде до вас у будь-яке місто України, або проведемо першу зустріч онлайн і надішлемо зразки тканин додому.</p></details>
+      <details><summary>Який стиль обрати: old money чи quiet luxury?</summary><p>Old money — це класика зі спадщиною: твід, фланель, клуб. Quiet luxury — сучасний мінімалізм без логотипів. Стиліст допоможе поєднати обидва під ваш спосіб життя.</p></details>
+      <details><summary>Що, якщо костюм не підійде?</summary><p>Ми підганяємо його безкоштовно, доки посадка не стане ідеальною. І потім теж, якщо ваша фігура зміниться.</p></details>
+      <details><summary>Як доглядати за вовняним костюмом?</summary><p>Чистити щіткою після кожного виходу, давати відпочити добу між носіннями, хімчистка не частіше 2 разів на сезон. Для клієнтів догляд у нас безкоштовний.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ЗАПИС -->
+<section class="book" id="book">
+  <img src="img/library.jpg" alt="">
+  <div class="in wrap">
+    <div>
+      <div class="rule cap">Приватна примірка</div>
+      <h2>Почніть з <em>розмови</em></h2>
+      <p>Залиште контакт. Менеджер зателефонує протягом години й запропонує час у ательє або виїзд кравця до вас.</p>
+    </div>
+    <form id="bookForm">
+      <label>Ім'я<input required name="name" autocomplete="name"></label>
+      <label>Телефон<input required name="tel" type="tel" autocomplete="tel" placeholder="+380"></label>
+      <label>Що цікавить
+        <select name="what"><option>Костюм на замовлення</option><option>Смокінг до події</option><option>Пальто</option><option>Гардероб на рік</option><option>Консультація стиліста</option></select>
+      </label>
+      <button class="btn brass" type="submit">Записатись на примірку</button>
+      <span class="note">Конфіденційно. Ми не передаємо контакти третім особам.</span>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><a href="#" class="logo" style="color:var(--on-dark)">AURELIAN</a><span style="margin-top:20px;max-width:34ch">Ательє класичного чоловічого костюма. Київ, з любов'ю до традиції.</span></div>
+      <div><h4>Ательє</h4><span>Київ, вул. Липська, 00</span><span>Пн–Сб 10:00–20:00</span><span>за попереднім записом</span></div>
+      <div><h4>Клієнтам</h4><a href="#bespoke">Пошиття</a><a href="#fabrics">Тканини</a><a href="#faq">Догляд і питання</a><span>Нова пошта · оплата карткою</span></div>
+      <div><h4>Зв'язок</h4><a href="tel:+380000000000">+380 00 000 00 00</a><a href="#">Instagram</a><a href="#">Telegram</a></div>
+    </div>
+    <div class="big">AURELIAN</div>
+    <div class="copy"><span>© 2026 AURELIAN. Усі права захищено.</span><span>Ціни та відгуки на сайті — заглушки.</span></div>
+  </div>
+</footer>
+
+<a href="#book" class="fab" id="fab">
+  <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a76b" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+  <span><small id="fabS">Безкоштовна консультація</small><b>Записатись на примірку</b></span>
+</a>
+<div class="toast" id="toast"></div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Скільки часу шиється костюм на замовлення?","acceptedAnswer":{"@type":"Answer","text":"Made to Measure — близько 4 тижнів, Bespoke — 6 тижнів."}},
+{"@type":"Question","name":"Яка ціна костюма на замовлення?","acceptedAnswer":{"@type":"Answer","text":"Костюм-двійка від 42 000 ₴, повний bespoke від 95 000 ₴."}},
+{"@type":"Question","name":"Чи можна зняти мірки, якщо я не в Києві?","acceptedAnswer":{"@type":"Answer","text":"Так, кравець приїде до вас у будь-яке місто України."}},
+{"@type":"Question","name":"Що, якщо костюм не підійде?","acceptedAnswer":{"@type":"Answer","text":"Підганяємо безкоштовно, доки посадка не стане ідеальною."}}]}
+</script>
+<script>
+(function(){
+  var n=0,cartN=document.getElementById('cartN'),toast=document.getElementById('toast'),fabS=document.getElementById('fabS'),t;
+  function say(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(t);t=setTimeout(function(){toast.classList.remove('on')},2200)}
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-n]');if(!b)return;
+    n++;cartN.textContent=n;fabS.textContent='Обрано: '+n;say('Додано: '+b.dataset.n);
+  });
+  // тканини
+  var sw=document.getElementById('sw');
+  sw.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    sw.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+    document.getElementById('fabImg').src=b.dataset.img;
+    document.getElementById('fabT').textContent=b.dataset.t;
+    document.getElementById('fabC').textContent=b.dataset.c;
+    document.getElementById('fabW').textContent=b.dataset.w;
+    document.getElementById('fabO').textContent=b.dataset.o;
+  });
+  // форма (без бекенду)
+  document.getElementById('bookForm').addEventListener('submit',function(e){e.preventDefault();say('Дякуємо. Ми зателефонуємо протягом години.');this.reset()});
+  // плаваюча кнопка
+  var fab=document.getElementById('fab'),hero=document.getElementById('top'),book=document.getElementById('book'),foot=document.querySelector('footer');
+  var vis={hero:true,book:false,foot:false};
+  function upd(){var s=!vis.hero&&!vis.book&&!vis.foot;fab.classList.toggle('show',s);document.body.classList.toggle('fab-shown',s)}
+  new IntersectionObserver(function(es){es.forEach(function(x){
+    if(x.target===hero)vis.hero=x.isIntersecting;else if(x.target===book)vis.book=x.isIntersecting;else vis.foot=x.isIntersecting;});upd();
+  },{threshold:0.05}).observe(hero);
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.target===book)vis.book=x.isIntersecting;else vis.foot=x.isIntersecting});upd()});
+  io.observe(book);io.observe(foot);
+})();
+</script>
+</body>
+</html>
