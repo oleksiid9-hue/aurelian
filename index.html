@@ -122,7 +122,8 @@ nav a:hover{color:var(--ink)}
 .dark{background:var(--deep);color:var(--on-dark)}
 .emperor{display:grid;grid-template-columns:5fr 7fr;gap:0;padding:0}
 .emperor .ph{min-height:720px}
-.emperor .ph img{object-position:50% 30%}
+.emperor .ph{position:relative;background:#1a0f12}
+.emperor .ph video{position:absolute;inset:0;object-position:50% 35%}
 .emperor .tx{padding:clamp(56px,8vw,120px) var(--edge) clamp(56px,8vw,120px) clamp(40px,6vw,96px);display:flex;flex-direction:column;justify-content:center}
 .emperor blockquote{font:400 clamp(34px,4vw,56px)/1.12 var(--serif);margin:28px 0 32px;max-width:18ch}
 .emperor .tx>p{color:rgba(236,229,214,.75)}
@@ -224,6 +225,46 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:14px 24px;font-size:14px;letter-spacing:.06em;opacity:0;transition:.35s;z-index:70;pointer-events:none;border-left:3px solid var(--brass)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* відео */
+video{display:block;width:100%;height:100%;object-fit:cover;background:var(--deep)}
+.vframe{position:relative;aspect-ratio:3/4;padding:10px;border:1px solid rgba(176,141,87,.55);background:var(--deep)}
+.vframe::after{content:"";position:absolute;inset:4px;border:1px solid rgba(176,141,87,.22);pointer-events:none}
+.vcap{display:flex;justify-content:space-between;gap:16px;margin-top:16px;font-size:14px}
+.vcap b{font:500 13px/1.4 var(--sc);letter-spacing:.2em;color:var(--brass)}
+.vcap span{color:rgba(236,229,214,.6)}
+
+/* Біла смужка */
+.film{display:grid;grid-template-columns:4fr 4fr 4fr;gap:40px;align-items:start}
+.film .tx h2{margin:20px 0 24px}
+.film .tx>p{color:rgba(236,229,214,.75)}
+.spec{list-style:none;margin:32px 0;border-top:1px solid var(--line-dark)}
+.spec li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line-dark);font-size:15px;color:rgba(236,229,214,.8)}
+.spec li span:first-child{color:rgba(236,229,214,.5)}
+.film .v2{margin-top:96px}
+
+/* Рів'єра */
+.riviera{background:#e9e0cf}
+.rv-top{display:grid;grid-template-columns:4fr 8fr;gap:24px}
+.rv-top .vframe{border-color:rgba(125,98,53,.5);background:#d9cdb6}
+.rv-top .vframe::after{border-color:rgba(125,98,53,.25)}
+.rv-big{position:relative;min-height:100%;color:var(--on-dark)}
+.rv-big img{position:absolute;inset:0}
+.rv-big::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,18,24,.75),transparent 55%)}
+.rv-big .t{position:absolute;left:40px;right:40px;bottom:36px;z-index:1}
+.rv-big .t p{font:400 clamp(26px,2.6vw,38px)/1.2 var(--serif);max-width:22ch}
+.rv-big .cap{color:#e7cf9f}
+.rv-cap{display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-size:14px;color:var(--muted)}
+.rv-cap b{font:500 13px/1.4 var(--sc);letter-spacing:.2em;color:var(--brass-ink)}
+.rv-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:24px}
+.rv-row figure .ph{aspect-ratio:4/5;margin-bottom:14px}
+.rv-row figcaption b{display:block;font:500 22px/1.2 var(--serif);margin-bottom:4px}
+.rv-row figcaption span{font-size:14px;color:var(--muted)}
+.rv-buy{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+.rv-buy h3{font-size:30px}
+.rv-buy p{font-size:15px;color:var(--muted)}
+.rv-buy .r{display:flex;align-items:center;gap:24px}
+.rv-buy .price{font:500 30px/1 var(--serif)}
+
 /* адаптив */
 @media (max-width:1100px){
   nav{display:none}
@@ -242,6 +283,11 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
   .tier{border-right:0;border-bottom:1px solid var(--line-dark)}
   .revs{grid-template-columns:1fr;gap:40px}
   .ft{grid-template-columns:1fr 1fr}
+  .film{grid-template-columns:1fr 1fr;gap:24px}
+  .film .tx{grid-column:1/-1}
+  .film .v2{margin-top:48px}
+  .rv-top{grid-template-columns:1fr 1fr}
+  .rv-row{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -276,6 +322,16 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
   .ft{grid-template-columns:1fr}
   .fab{right:16px;bottom:16px;left:16px;justify-content:flex-start}
   body.fab-shown .toast{bottom:96px}
+  .film{gap:16px 12px}
+  .film .v2{margin-top:32px}
+  .vcap{flex-direction:column;gap:2px;font-size:13px}
+  .vframe{padding:6px}
+  .rv-top{grid-template-columns:1fr}
+  .rv-big{min-height:420px}
+  .rv-big .t{left:24px;right:24px;bottom:24px}
+  .rv-row{gap:24px 12px}
+  .rv-row figcaption b{font-size:19px}
+  .rv-buy .r{width:100%;justify-content:space-between}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
 </style>
@@ -290,6 +346,7 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
     <nav>
       <a href="#collection">Колекція</a>
       <a href="#styles">Стилі</a>
+      <a href="#riviera">Рів'єра</a>
       <a href="#bespoke">Пошиття</a>
       <a href="#fabrics">Тканини</a>
       <a href="#details">Деталі</a>
@@ -368,6 +425,32 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
   </div>
 </section>
 
+<!-- БІЛА СМУЖКА (відео) -->
+<section class="dark" id="pinstripe">
+  <div class="wrap film">
+    <div class="tx">
+      <div class="rule cap">Капсула · Біла смужка</div>
+      <h2>Світла вовна. <em>Чорний камінь.</em></h2>
+      <p>Кремовий костюм у тонку смужку носять ті, кому не потрібно ховатися в темному. Він для денних угод, літніх весіль і вечорів на терасі.</p>
+      <ul class="spec">
+        <li><span>Тканина</span><span>Вовна і льон, тонка смужка</span></li>
+        <li><span>Крій</span><span>Один ґудзик, гострі лацкани</span></li>
+        <li><span>Носити</span><span>Сорочка без краватки</span></li>
+        <li><span>Пошиття</span><span>4 тижні</span></li>
+      </ul>
+      <button class="btn brass" data-n="Костюм «Біла смужка»">Обрати · 46 000 ₴</button>
+    </div>
+    <figure>
+      <div class="vframe"><video data-auto muted loop playsinline preload="none" poster="video/v-pinstripe-gaze.jpg" aria-label="Чоловік у кремовому костюмі в смужку біля стіни з чорного каменю"><source src="video/v-pinstripe-gaze.mp4" type="video/mp4"></video></div>
+      <figcaption class="vcap"><b>I · Погляд</b><span>Впевненість не дивиться в камеру</span></figcaption>
+    </figure>
+    <figure class="v2">
+      <div class="vframe"><video data-auto muted loop playsinline preload="none" poster="video/v-pinstripe-glasses.jpg" aria-label="Чоловік у кремовому костюмі знімає сонцезахисні окуляри"><source src="video/v-pinstripe-glasses.mp4" type="video/mp4"></video></div>
+      <figcaption class="vcap"><b>II · Сонце</b><span>Окуляри знімають лише для своїх</span></figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- КЛАСИ СТИЛЮ -->
 <section id="styles" class="styles">
   <div class="wrap">
@@ -388,7 +471,7 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
 
 <!-- ІМПЕРАТОР -->
 <section class="emperor dark" id="code">
-  <div class="ph"><img src="img/emperor.jpg" alt="Профіль чоловіка в костюмі в темряві"></div>
+  <div class="ph"><video data-auto muted loop playsinline preload="none" poster="video/v-throne.jpg" aria-label="Чоловік у чорному костюмі сидить у бордовому кріслі, як на троні"><source src="video/v-throne.mp4" type="video/mp4"></video></div>
   <div class="tx">
     <div class="rule cap">Кодекс Імператора</div>
     <blockquote>Імператор не просить уваги. Він <em>бере відповідальність</em>.</blockquote>
@@ -397,6 +480,34 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
       <div><b>Порядок</b><span>Світ навколо впорядкований, бо впорядкований він сам.</span></div>
       <div><b>Слово</b><span>Сказане один раз має вагу підпису.</span></div>
       <div><b>Спадщина</b><span>Будує те, що переживе його самого.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- РІВ'ЄРА -->
+<section class="riviera" id="riviera">
+  <div class="wrap">
+    <div class="sh">
+      <div class="num rule cap">Riviera Summer</div>
+      <h2>Літо, яке <em>не поспішає</em> закінчуватись</h2>
+      <p>Бежевий льон, травертин, тінь кипарисів. Гардероб для вілли, а не для готелю.</p>
+    </div>
+    <div class="rv-top">
+      <figure>
+        <div class="vframe"><video data-auto muted loop playsinline preload="none" poster="video/v-linen-travertine.jpg" aria-label="Чоловік у бежевому лляному костюмі біля стіни з травертину"><source src="video/v-linen-travertine.mp4" type="video/mp4"></video></div>
+        <figcaption class="rv-cap"><b>Бежевий льон</b><span>Травертин · морський бриз</span></figcaption>
+      </figure>
+      <div class="rv-big zoom"><img src="img/r-villa-arch.jpg" alt="Арки італійської вілли з видом на озеро"><div class="t"><span class="cap">Вілла · Комо</span><p>«Справжнє багатство тихе. Його чути лише в шелесті льону».</p></div></div>
+    </div>
+    <div class="rv-row">
+      <figure><div class="ph zoom"><img src="img/r-linen-men.jpg" alt="Чоловіки в білому льоні на терасі"></div><figcaption><b>Льон, що мнеться благородно</b><span>Складки на льоні — ознака класу, а не недбалості.</span></figcaption></figure>
+      <figure><div class="ph zoom"><img src="img/r-car.jpg" alt="Білий класичний кабріолет під деревами"></div><figcaption><b>Кабріолет, а не швидкість</b><span>Дорога важить більше, ніж час прибуття.</span></figcaption></figure>
+      <figure><div class="ph zoom"><img src="img/r-polo.jpg" alt="Вершник грає в поло на туманному полі"></div><figcaption><b>Поло на світанку</b><span>Спорт, у якому шанують правила й коня.</span></figcaption></figure>
+      <figure><div class="ph zoom"><img src="img/r-amalfi.jpg" alt="Узбережжя Амальфі у вечірніх вогнях"></div><figcaption><b>Узбережжя ввечері</b><span>Вечеря о дев'ятій, коли спека відступає.</span></figcaption></figure>
+    </div>
+    <div class="rv-buy">
+      <div><span class="cap" style="color:var(--brass-ink)">Костюм · льон і шовк</span><h3>«Травертин»</h3><p>Бежевий, неструктуроване плече, накладні кишені.</p></div>
+      <div class="r"><span class="price">39 000 ₴</span><button class="btn" data-n="Костюм «Травертин»">Обрати</button></div>
     </div>
   </div>
 </section>
@@ -468,10 +579,10 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
   </div>
   <div class="life">
     <div class="zoom"><img src="img/library.jpg" alt="Бібліотека з темного дерева"></div>
-    <div class="zoom"><img src="img/whisky.jpg" alt="Склянка віскі на темному тлі"></div>
-    <div class="zoom"><img src="img/yacht-man.jpg" alt="Чоловік у білому на палубі яхти"></div>
+    <div class="zoom"><img src="img/rt-cigar.jpg" alt="Сигара і склянка віскі"></div>
+    <div class="zoom"><img src="img/rt-pen.jpg" alt="Перова ручка пише лист"></div>
     <div class="zoom"><img src="img/watch-dark.jpg" alt="Годинник на зап'ясті в темряві"></div>
-    <div class="q"><span class="cap">AURELIAN</span><p>«Справжня розкіш — це час, який не треба нікому доводити».</p></div>
+    <div class="q"><span class="cap">Ритуали</span><p>Лист від руки. Сигара після угоди. Слово, скріплене підписом.</p></div>
   </div>
 </section>
 
@@ -604,6 +715,17 @@ footer{background:var(--deep);color:var(--on-dark);padding:88px 0 32px;border-to
     document.getElementById('fabW').textContent=b.dataset.w;
     document.getElementById('fabO').textContent=b.dataset.o;
   });
+  // відео грають лише коли видно на екрані
+  var vids=document.querySelectorAll('video[data-auto]');
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!still&&'IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(x){
+      var v=x.target;
+      if(x.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load()}var p=v.play();if(p&&p.catch)p.catch(function(){})}
+      else v.pause();
+    })},{threshold:0.25});
+    vids.forEach(function(v){vio.observe(v)});
+  }
   // форма (без бекенду)
   document.getElementById('bookForm').addEventListener('submit',function(e){e.preventDefault();say('Дякуємо. Ми зателефонуємо протягом години.');this.reset()});
   // плаваюча кнопка
