@@ -407,6 +407,18 @@ video{display:block;width:100%;height:100%;object-fit:cover;background:var(--dee
 .light-band p{max-width:620px;margin:20px auto 0;font-size:18px;opacity:.85}
 .light-band ul{list-style:none;padding:0;margin:40px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 36px;font-family:var(--serif);font-size:21px;font-style:italic;color:var(--brass-ink)}
 </style>
+<script>
+/* always open at the top: no restored scroll position, no jump to #anchor */
+(function(){
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  try{ if(location.hash) history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  function top(){ window.scrollTo({top:0,left:0,behavior:'instant'}); }
+  top();
+  document.addEventListener('DOMContentLoaded',top);
+  window.addEventListener('load',function(){ top(); setTimeout(top,60); });
+  window.addEventListener('pageshow',function(e){ if(e.persisted) top(); });
+})();
+</script>
 </head>
 <body>
 
